@@ -39,6 +39,6 @@ export default async function loginButtonHandler() {
     const token = json.user.token;
     localStorage.setItem("token", token);
 
-    console.log(json, `${json.user.username} 로그인`);
-    console.log(`토큰 체크: ${hasToken}`);
+    console.log(`${json.user.username} 로그인`, "loginButtonHandler");
+    console.log(`토큰 체크: ${hasToken}`, "loginButtonHandler");
 }

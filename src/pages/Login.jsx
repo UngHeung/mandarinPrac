@@ -2,6 +2,8 @@ import React from "react";
 import loginButtonHandler from "../utils/loginButtonHandler";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import getMyInfo from "../utils/getMyInfo";
+import { setUserName } from "../store";
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -16,7 +18,14 @@ export default function Login() {
                 <input type="password" id="user_password" />
             </section>
             <section className="button_wrapper">
-                <button type="button" onClick={() => dispatch(loginButtonHandler())}>
+                <button
+                    type="button"
+                    onClick={async () => {
+                        loginButtonHandler();
+                        const user = await getMyInfo();
+                        dispatch(setUserName(user.username));
+                    }}
+                >
                     로그인
                 </button>
                 <Link to="/user">이메일로 회원가입</Link>

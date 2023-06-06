@@ -3,16 +3,16 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 let user = createSlice({
     name: "user",
     initialState: {
-        userName: "비회원",
+        myName: "비회원",
     },
     reducers: {
-        setName(state, action) {
-            state[0].userName = action.payload;
+        setUserName(state, action) {
+            state.myName = action.payload;
         },
     },
 });
 
-export let { setName } = user.actions;
+export let { setUserName } = user.actions;
 
 export default configureStore({
     reducer: {
