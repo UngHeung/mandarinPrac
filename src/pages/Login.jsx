@@ -1,12 +1,22 @@
 import React from "react";
 import loginButtonHandler from "../utils/loginButtonHandler";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import getMyInfo from "../utils/getMyInfo";
 import { setUserName } from "../store";
+import checkToken from "../utils/checkToken";
 
 export default function Login() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const movePage = () => {
+        if (!checkToken) {
+            return false;
+        } else {
+            navigate("/main");
+        }
+    };
 
     return (
         <form>
@@ -24,6 +34,7 @@ export default function Login() {
                         loginButtonHandler();
                         const user = await getMyInfo();
                         dispatch(setUserName(user.username));
+                        movePage();
                     }}
                 >
                     로그인
