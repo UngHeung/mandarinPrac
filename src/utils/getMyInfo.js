@@ -19,7 +19,6 @@ export default async function getMyInfo() {
     });
 
     const json = await response.json();
-    console.log(json.user, "getMyInfo");
 
     return json.user;
 }

@@ -28,7 +28,7 @@ export default async function signupButtonHandler() {
             image: userProfile,
         },
     };
-    console.log(requestUrl);
+
     const response = await fetch(requestUrl, {
         method: "POST",
         headers: {
@@ -38,5 +38,8 @@ export default async function signupButtonHandler() {
     });
 
     const json = await response.json();
+
+    alert(json.message);
     console.log(json, `${json.user} 회원가입`);
+    return json.status;
 }

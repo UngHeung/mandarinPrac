@@ -30,14 +30,14 @@ export default async function loginButtonHandler() {
         body: JSON.stringify(userData),
     });
 
+    const json = await response.json();
+    const token = json.user.token;
+    localStorage.setItem("token", token);
+
     const hasToken = await checkToken();
     if (!hasToken) {
         return false;
     }
-
-    const json = await response.json();
-    const token = json.user.token;
-    localStorage.setItem("token", token);
 
     console.log(`${json.user.username} 로그인`, "loginButtonHandler");
     console.log(`토큰 체크: ${hasToken}`, "loginButtonHandler");

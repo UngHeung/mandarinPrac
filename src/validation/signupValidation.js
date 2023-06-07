@@ -11,7 +11,7 @@ export default function validation(userEmail, userPassword) {
     }
 
     if (!regEmail.test(userEmail)) {
-        alert(`${userEmail}은 올바른 이메일 형식이 아닙니다.`);
+        alert(`올바른 이메일 형식이 아닙니다.`);
         return false;
     }
 
