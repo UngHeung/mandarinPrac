@@ -1,10 +1,10 @@
 import React from "react";
-import loginButtonHandler from "../utils/loginButtonHandler";
+import loginButtonHandler from "../../utils/loginButtonHandler";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import getMyInfo from "../utils/getMyInfo";
-import { setUserName } from "../store";
-import checkToken from "../utils/checkToken";
+import getMyInfo from "../../utils/getMyInfo";
+import { setUserName } from "../../store";
+import checkToken from "../../utils/checkToken";
 
 export default function Login() {
     const dispatch = useDispatch();
@@ -31,10 +31,12 @@ export default function Login() {
                 <button
                     type="button"
                     onClick={async () => {
-                        loginButtonHandler();
+                        const status = await loginButtonHandler();
                         const user = await getMyInfo();
                         dispatch(setUserName(user.username));
-                        movePage();
+                        if (!status) {
+                            movePage();
+                        }
                     }}
                 >
                     로그인

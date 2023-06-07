@@ -1,10 +1,22 @@
-import signupButtonHandler from "../utils/signupButtonHandler";
-import nextButtonHandler from "../utils/nextButtonHandler";
-import { DEFAULT_IMAGE } from "../constant/path";
+import signupButtonHandler from "../../utils/signupButtonHandler";
+import nextButtonHandler from "../../utils/nextButtonHandler";
+import { DEFAULT_IMAGE } from "../../constant/path";
+import checkToken from "../../utils/checkToken";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
     const imagePathDefault = DEFAULT_IMAGE;
     const imageAltDefault = "기본 회원 이미지";
+
+    const navigate = useNavigate();
+
+    const movePage = () => {
+        if (!checkToken) {
+            return false;
+        } else {
+            navigate("/user/login");
+        }
+    };
 
     return (
         <form>
@@ -37,7 +49,13 @@ export default function Signup() {
                     <input type="text" id="user_intro" />
                 </section>
                 <section className="button_wrapper button_start">
-                    <button type="button" onClick={signupButtonHandler}>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            signupButtonHandler();
+                            movePage();
+                        }}
+                    >
                         시작하기
                     </button>
                 </section>
