@@ -3,7 +3,7 @@ import loginButtonHandler from "../../utils/loginButtonHandler";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import getMyInfo from "../../utils/getMyInfo";
-import { setUserName } from "../../store";
+import { setUserName } from "../../store/slices/userSlice";
 import checkToken from "../../utils/checkToken";
 
 export default function Login() {

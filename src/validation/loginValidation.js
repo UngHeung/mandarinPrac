@@ -13,11 +13,10 @@ export default function validation(userEmail, userPassword) {
         return false;
     }
 
-    if (userPassword)
-        if (!regEmail.test(userEmail)) {
-            alert(`${userEmail}은 올바른 이메일 형식이 아닙니다.`);
-            return false;
-        }
+    if (!regEmail.test(userEmail)) {
+        alert(`${userEmail}은 올바른 이메일 형식이 아닙니다.`);
+        return false;
+    }
 
     return true;
 }

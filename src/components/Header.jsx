@@ -3,7 +3,7 @@ import logoutButtonHandler from "../utils/logoutButtonHandler";
 import checkToken from "../utils/checkToken";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setUserName } from "../store";
+import { setUserName } from "../store/slices/userSlice";
 
 export default function Header() {
     const state = useSelector((state) => state.user);
